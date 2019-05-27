@@ -76,5 +76,7 @@ class buttonEffectPulse {
 
 //test
 let buttons = document.querySelectorAll(".buttonEffectPulse");
-let test = new buttonEffectPulse(buttons[0], "buttonEffectPulse");
+buttons.forEach(function(item) {
+    new buttonEffectPulse(item, "buttonEffectPulse");
+})
 // console.log(test);
