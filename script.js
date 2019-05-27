@@ -10,16 +10,26 @@ class buttonEffectPulse {
         this._pulseElement = document.createElement("span");
 
         this._init();
-        this._addPulseElement(2, 3);
     }
 
     _init() {
-        console.log(1);
+        let self = this;
+
         this._pulseElement.classList.add(this._classButtonPulse);
+
+        self._self.addEventListener("click", function(event) {
+            let clickX = event.offsetX==undefined?event.layerX:event.offsetX,
+                clickY = event.offsetY==undefined?event.layerY:event.offsetY;
+
+                console.log(event.target);
+
+                if (this === event.target) {
+                    self._addPulseElement(clickX, clickY);
+                }
+        });
     }
 
     _addPulseElement(positionX, positionY) {
-        console.log(11);
 
         let clonePulseElement = this._pulseElement.cloneNode(false);
 
@@ -57,7 +67,6 @@ class buttonEffectPulse {
                 element.style.width = pulseWidth.toString() + "px";
                 element.style.height = pulseWidth.toString() + "px";
                 element.style.opacity = parseFloat(element.style.opacity) - pulseOpacityInterval;
-                console.log(parseFloat(element.style.opacity));
             } else {
                 self._removePulseElement(element);
                 clearInterval(animation);
