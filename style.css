@@ -21,8 +21,8 @@ button {
     border-radius: 100px;
     color: #fff;
     cursor: pointer;
+    z-index: 1;
 }
-
 
 .button:hover {
     background-color: #02c0e9;
@@ -30,4 +30,11 @@ button {
 
 .button:active {
     background-color: #0096b6;
+}
+
+
+.buttonEffectPulse--pulse {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: -1
 }
