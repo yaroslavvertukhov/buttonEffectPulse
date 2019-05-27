@@ -1,0 +1,33 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.button {
+    transition: .2s background-color;
+    padding: 15px 35px;
+    font-size: 25px;
+    position: relative;
+    overflow: hidden;
+    background-color: #00b2d9;
+    border-radius: 100px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.button:hover {
+    background-color: #02c0e9;
+}
+
+.button:active {
+    background-color: #0096b6;
+}
