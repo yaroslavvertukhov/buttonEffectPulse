@@ -1,11 +1,8 @@
-let buttons = document.querySelectorAll(".buttonEffectPulse");
-
-
 class buttonEffectPulse {
     constructor(self, classButton, classButtonPulse) {
         this._self = self;
         this._classButton = classButton;
-        this._classButtonPulse = classButtonPulse || classButton + "--pulse";
+        this._classButtonPulse = classButtonPulse || classButton + "__pulse";
 
         this._pulseElement = document.createElement("span");
 
@@ -18,14 +15,11 @@ class buttonEffectPulse {
         this._pulseElement.classList.add(this._classButtonPulse);
 
         self._self.addEventListener("click", function(event) {
-            let clickX = event.offsetX==undefined?event.layerX:event.offsetX,
-                clickY = event.offsetY==undefined?event.layerY:event.offsetY;
+            let targetCoords = self._self.getBoundingClientRect(),
+                clickX = event.clientX - targetCoords.left,
+                clickY = event.clientY - targetCoords.top;
 
-                console.log(event.target);
-
-                if (this === event.target) {
-                    self._addPulseElement(clickX, clickY);
-                }
+                self._addPulseElement(clickX, clickY);
         });
     }
 
@@ -45,7 +39,7 @@ class buttonEffectPulse {
             buttonStyle = window.getComputedStyle(this._self),
             buttonWidth = parseInt(buttonStyle.width),
             buttonHeight = parseInt(buttonStyle.height),
-            intervalSize = 3,
+            intervalSize = 2,
             pulseOpacityInterval,
             pulseOpacity = 0,
             pulseSize;
@@ -81,5 +75,6 @@ class buttonEffectPulse {
 }
 
 //test
+let buttons = document.querySelectorAll(".buttonEffectPulse");
 let test = new buttonEffectPulse(buttons[0], "buttonEffectPulse");
 // console.log(test);

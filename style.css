@@ -32,9 +32,8 @@ button {
     background-color: #0096b6;
 }
 
-
-.buttonEffectPulse--pulse {
-    background-color: rgba(255, 255, 255, 0.5);
+.buttonEffectPulse__pulse {
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    z-index: -1
+    z-index: -1;
 }
